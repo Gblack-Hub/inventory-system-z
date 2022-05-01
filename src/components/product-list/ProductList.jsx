@@ -1,22 +1,17 @@
-// import ProductItem from "./ProductItem";
-import ProductListItem1 from "./ProductListItem1";
-
-import { useState } from "react";
-
+import ProductItem from "./ProductItem";
 // import AddProduct from "../AddProduct";
 
-const ProductList = ({ products }) =>
-{
-  const [ produc, setProduc ] = useState([]);
+const ProductList = ({ products, removeItemByIndex }) => {
 
- 
-
+  function itemToRemove(indexOfTheItemToRemove) {
+    removeItemByIndex(indexOfTheItemToRemove);
+  }
 
   
-   const Remove = (index) =>{
-   let newproduct = products.filter((product) => product.index !== index);
-    setProduc(newproduct);
-   }
+  //  const Remove = (index) =>{
+  //  let newproduct = products.filter((product) => product.index !== index);
+  //   setProduc(newproduct);
+  //  }
   
   return (
     <div className="card card-body shadow mt-5">
@@ -32,20 +27,8 @@ const ProductList = ({ products }) =>
         </thead>
         <tbody>
           {products.map((product, index) => (
-            // <tr key={ index }>
-            //   {/* <ProductListItem1  index={product.index} product={product.product} quantity={product.quantity} option={product.option} /> */}
-            //   <td>{++index}</td>
-            //   <td>{product.name}</td>
-            //   <td>{product.quantity}</td>
-            //   <td>
-            //     {/* <button className="btn btn-success me-2">+</button>
-            //      <button className="btn btn-danger">-</button> */}
-            //     <button className="btn btn-danger">Delete</button>
-            //   </td>
-            // </tr>
-            <ProductListItem1 />
+            <ProductItem product={product} num={index} key={index} itemToRemove={itemToRemove} />
           ))}
-          {/* <ProductItem /> */}
         </tbody>
       </table>
     </div>

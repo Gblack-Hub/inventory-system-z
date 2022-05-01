@@ -7,7 +7,7 @@
                  <td>{ ++index }</td>
                  <td>{ name }</td>
                  <td>{ quantity }</td>
-                    <td> <button className="btn btn-danger">Delete</button></td>
+                <td> <button className="btn btn-danger">Delete</button></td>
              </tr> 
          </>
      )

@@ -1,30 +1,36 @@
 import {useState} from "react";
 // import ProductList from "./product-list/ProductList";
 
-function AddProduct({ newProduct }) {
+function AddProduct({addProductToParent}) {
   const [productName, setProductName] = useState("");
   const [quantity, setQuantity] = useState("");
 
   const handleChangeProductName = (e) => {
     setProductName(e.target.value);
-   
   }
 
   const handleChangeQuantity = (e) => {
     setQuantity(e.target.value);
-    
   }
 
   const handleAddProduct = (e) => {
     e.preventDefault();
     
-    // if (productName === productName)
-    // {
-    //   alert("this particular product already exist")
-   
+    //if statement that checks if product details is empty or not
+    if(productName !== "") {
       let prod = { name: productName, quantity: quantity };
-      
-      newProduct(prod);
+
+      addProductToParent(prod); //put the data that you're sending to the parent component as an argument.
+      return;
+    }
+    alert("Product name is empty");
+
+    // if(productName === "") {
+    //   alert("Product name is empty")
+    // } else { 
+    //   let prod = { name: productName, quantity: quantity };
+    //   newProduct(prod);
+    // }
   }
 
   return (
